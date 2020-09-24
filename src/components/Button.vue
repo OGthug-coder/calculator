@@ -28,7 +28,13 @@ export default {
         font-size: 30px;
 
         border-radius: 100%;
-        background-color: #2b2929;
+        background-color: rgb(66, 73, 73);
+        transition: background-color .5s ease-out;
     }
+
+    .button-box:active {
+        background-color: rgb(166, 172, 175);
+    }
+
 
 </style>
