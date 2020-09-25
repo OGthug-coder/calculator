@@ -2,7 +2,7 @@
     <div class="main">
         <div class="result">1234</div>
         <div class="keypad">
-            <Button text="AC" class="side-operation" />
+            <Button text="C" class="side-operation" />
             <Button text="&#x00B1;" class="side-operation" />
             <Button text="&#37;" class="side-operation" />
             <Button text="&#247;" class="main-operation"/>
@@ -69,11 +69,25 @@ export default {
     }
 
     .main-operation {
-        background-color: #ffa500;
+        color: rgb(253, 254, 254);
+        background-color: rgb(255,165,0);
+        transition: all .5s ease-out;
+    }
+
+    .main-operation:active {
+        color: rgb(255,165,0);
+        background-color: rgb(253, 254, 254);
     }
 
     .side-operation {
-        background-color: #808080;
+        color: #000000;
+        background-color: rgb(166, 172, 175);
+        transition: background-color .5s ease-out;
+    }
+
+    .side-operation:active {
+        background-color: rgb(240, 240, 240);
+
     }
 
 </style>

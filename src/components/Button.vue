@@ -34,6 +34,7 @@ export default {
 
     .button-box:active {
         background-color: rgb(166, 172, 175);
+        transition: background-color 0s;
     }
 
 
