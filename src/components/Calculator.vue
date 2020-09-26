@@ -22,7 +22,10 @@
             <Button @click="append('3')" text="3"/>
             <Button @click="plus" text="+" class="main-operation" />
 
-            <Button @click="append(`${Math.round(Math.PI * 100) / 100}`)" text="&#960;"/>
+            <Button @click="
+                !this.current ? append(`${Math.round(Math.PI * 100) / 100}`) :
+                ''
+            " text="&#960;"/>
             <Button @click="append('0')" text="0"/>
             <Button @click="dot" text="."/>
             <Button @click="equals" text="=" class="main-operation" />
@@ -66,9 +69,13 @@ export default {
                 this.current = '';
                 this.operatorClicked = false;
             }
-            if (this.checkLength()){
-                this.current = `${this.current}${number}`;
+
+            this.current = `${this.current}${number}`;
+
+            if (!this.checkLength()){
+                this.toShortForm();
             }
+
         },
 
         dot () {
@@ -105,11 +112,20 @@ export default {
                 parseFloat(this.previous),
                 parseFloat(this.current)
             )}`;
+
+            if (!this.checkLength()){
+                this.toShortForm();
+            }
+
             this.previous = null;
         }, 
 
         checkLength () {
             return this.current.length < 10;
+        },
+
+        toShortForm () {
+            this.current = `${parseFloat(this.current).toExponential(4)}`;
         }
     }
 }
