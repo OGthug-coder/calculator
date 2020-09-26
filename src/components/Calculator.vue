@@ -105,6 +105,7 @@ export default {
 
         plus () {
             this.operator = (a, b) => a + b;
+            this.setPrevious();
         },
 
         equals () {
