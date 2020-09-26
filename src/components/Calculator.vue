@@ -89,7 +89,7 @@ export default {
         },
 
         divide () {
-            this.operator = (a, b) => a / b;
+            this.operator = (a, b) => Math.round(a / b * 100) / 100;
             this.setPrevious();
         },
 
