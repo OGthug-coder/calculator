@@ -1,6 +1,6 @@
 <template>
     <div class="main">
-        <div class="result">{{ current || '0' }}</div>
+        <div class="result">{{ current || 0 }}</div>
         <div class="keypad">
             <Button @click="clear" text="C" class="side-operation" />
             <Button @click="sign" text="&#x00B1;" class="side-operation" />
@@ -23,8 +23,8 @@
             <Button @click="plus" text="+" class="main-operation" />
 
             <Button @click="
-                !this.current ? append(`${Math.round(Math.PI * 100) / 100}`) :
-                ''
+                this.current.indexOf('.') === -1 ?
+                 append(`${Math.round(Math.PI * 100) / 100}`) : ''
             " text="&#960;"/>
             <Button @click="append('0')" text="0"/>
             <Button @click="dot" text="."/>
@@ -89,7 +89,7 @@ export default {
         },
 
         divide () {
-            this.operator = (a, b) => Math.round(a / b * 100) / 100;
+            this.operator = (a, b) => a / b;
             this.setPrevious();
         },
 
